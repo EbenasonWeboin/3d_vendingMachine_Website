@@ -6,12 +6,12 @@ import { BadgeCheck, ArrowRight } from "lucide-react";
 export default function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex flex-col md:flex-row items-center relative z-10">
         {/* Left side spacer for 3D Machine (Desktop) */}
         <div className="hidden md:block w-1/2" />
 
         {/* Right side content — no card on hero */}
-        <div className="w-full md:w-1/2 flex flex-col items-start pt-32 md:pt-0">
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start pt-24 sm:pt-32 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white"
+            className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white text-center md:text-left"
           >
             Future-Ready <br />
             <span className="text-gradient">Smart Vending</span> <br />
@@ -37,7 +37,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-400 mb-10 max-w-lg"
+            className="text-base sm:text-lg md:text-xl text-gray-400 mb-10 max-w-lg text-center md:text-left"
           >
             AI-powered vending machines designed for offices, schools, hospitals, and commercial environments.
           </motion.p>
@@ -62,7 +62,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="mt-16 flex items-center gap-8 border-t border-white/10 pt-8 w-full"
+            className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center md:justify-start gap-6 sm:gap-8 border-t border-white/10 pt-8 w-full"
           >
             <div>
               <p className="text-3xl font-bold text-white mb-1">1000+</p>

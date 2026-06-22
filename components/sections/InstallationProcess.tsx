@@ -13,13 +13,13 @@ const steps = [
 export default function InstallationProcess() {
   return (
     <section className="relative py-32 z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             Seamless <span className="text-gradient">Deployment</span>
           </motion.h2>
@@ -37,11 +37,11 @@ export default function InstallationProcess() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
-                className={`flex flex-col md:flex-row items-center justify-between w-full ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                className={`flex flex-col md:flex-row items-center justify-between w-full gap-4 ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Content Side */}
-                <div className={`w-full md:w-5/12 ${idx % 2 !== 0 ? 'md:text-left' : 'md:text-right'} text-center md:text-left`}>
-                  <div className="glass p-6 rounded-2xl inline-block w-full hover:border-primary/50 transition-colors">
+                <div className={`w-full md:w-5/12 ${idx % 2 !== 0 ? 'md:text-left' : 'md:text-right'} text-center`}>
+                  <div className="glass p-4 sm:p-6 rounded-2xl inline-block w-full hover:border-primary/50 transition-colors">
                     <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
                     <p className="text-gray-400 text-sm">{step.desc}</p>
                   </div>

@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 export default function Contact() {
   return (
     <section id="contact" className="relative py-20 z-10 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto section-card p-8 md:p-16 text-center relative overflow-hidden">
+      <div className="max-w-5xl mx-auto section-card p-6 sm:p-8 md:p-16 text-center relative overflow-hidden">
         
         {/* Animated Background Gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
@@ -17,10 +17,10 @@ export default function Contact() {
         />
 
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6">
             Ready for the <span className="text-gradient">Future?</span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mb-10">
             Join hundreds of forward-thinking companies who have upgraded their spaces with our AI-powered vending solutions.
           </p>
           

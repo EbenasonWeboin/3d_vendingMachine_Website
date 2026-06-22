@@ -38,18 +38,18 @@ export default function ProductShowcase() {
   return (
     <section className="relative py-20 z-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="section-card p-8 md:p-12">
+        <div className="section-card p-4 sm:p-8 md:p-12">
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
               Premium <span className="text-gradient">Products</span>
             </h2>
             <p className="text-gray-400 text-lg">Interact with our 3D procedural products. Drag to rotate.</p>
           </div>
 
           {/* 3D Canvas */}
-          <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden"
-            style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}>
+          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden"
+            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
             <Canvas camera={{ position: [0, 0, 6], fov: 45 }} gl={{ antialias: true, alpha: true }}>
               <ambientLight intensity={0.5} />
               <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#6D28FF" />

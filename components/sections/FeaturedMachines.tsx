@@ -30,13 +30,13 @@ const machines = [
 export default function FeaturedMachines() {
   return (
     <section id="machines" className="relative py-32 z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             Featured <span className="text-gradient">Models</span>
           </motion.h2>
@@ -45,7 +45,7 @@ export default function FeaturedMachines() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg"
           >
             Discover our lineup of intelligent vending machines tailored for any environment.
           </motion.p>
@@ -60,7 +60,7 @@ export default function FeaturedMachines() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className={`group relative p-8 rounded-3xl glass transition-all duration-500 border border-white/5 ${machine.border} overflow-hidden`}
+              className={`group relative p-6 sm:p-8 rounded-3xl glass transition-all duration-500 border border-white/5 ${machine.border} overflow-hidden`}
             >
               {/* Background Glow */}
               <div className={`absolute inset-0 bg-gradient-to-br ${machine.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />

@@ -64,7 +64,7 @@ export default function Navbar() {
         <div
           className="flex items-center gap-2 px-4 py-3 rounded-full"
           style={{
-            background: "rgba(10, 5, 25, 0.85)",
+            background: "rgba(10, 5, 25, 0.92)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
             border: "1px solid rgba(255,255,255,0.12)",
@@ -144,7 +144,7 @@ export default function Navbar() {
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               className="absolute top-full mt-3 left-0 right-0 rounded-2xl overflow-hidden flex flex-col"
               style={{
-                background: "rgba(10, 5, 25, 0.95)",
+                background: "rgba(10, 5, 25, 0.97)",
                 border: "1px solid rgba(255,255,255,0.1)",
                 boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
               }}

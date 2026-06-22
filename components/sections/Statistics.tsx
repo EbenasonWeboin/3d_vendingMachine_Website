@@ -45,8 +45,8 @@ const stats = [
 export default function Statistics() {
   return (
     <section className="relative py-24 z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="section-card p-6 md:p-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        <div className="section-card p-4 sm:p-6 md:p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <motion.div
@@ -57,7 +57,7 @@ export default function Statistics() {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="text-center py-6"
               >
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2 flex items-center justify-center">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 flex items-center justify-center">
                   <Counter from={0} to={stat.value} />
                   <span className="text-primary">{stat.suffix}</span>
                 </div>

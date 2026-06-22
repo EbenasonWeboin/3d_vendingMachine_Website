@@ -42,11 +42,11 @@ export default function ScrollStorytelling() {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full flex items-center overflow-hidden z-10 pointer-events-none">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex">
         <div className="w-full md:w-1/3 flex flex-col justify-center relative h-[300px]">
           
           <div className="story-label absolute inset-0 flex flex-col justify-center opacity-0">
-            <h3 className="text-3xl font-bold text-white mb-2">Smart Sensors</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Smart Sensors</h3>
             <p className="text-gray-400">Advanced telemetry arrays monitor machine health and inventory in real-time.</p>
           </div>
           

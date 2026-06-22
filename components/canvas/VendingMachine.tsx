@@ -118,19 +118,71 @@ export default function VendingMachine() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (outerGroup.current) {
-      gsap.set(outerGroup.current.position, { x: -2.5, y: -0.2, z: 0 });
-      gsap.set(outerGroup.current.rotation, { y: 0.2 });
 
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1 }
-      });
+    const getResponsiveConfig = () => {
+      const w = window.innerWidth;
+      if (w < 640) {
+        // Mobile: center the machine, scale it down
+        return {
+          startX: 0, startY: -0.5, startZ: 1,
+          startRotY: 0.15,
+          midX: 0, midY: 0, midZ: 0,
+          midRotY: -0.15,
+          endZ: 1.5,
+          scale: 0.55,
+        };
+      } else if (w < 1024) {
+        // Tablet: slightly offset, medium scale
+        return {
+          startX: -1.2, startY: -0.3, startZ: 0.5,
+          startRotY: 0.15,
+          midX: 0, midY: 0, midZ: -0.5,
+          midRotY: -0.15,
+          endZ: 1,
+          scale: 0.7,
+        };
+      } else {
+        // Desktop: original layout
+        return {
+          startX: -2.5, startY: -0.2, startZ: 0,
+          startRotY: 0.2,
+          midX: 0, midY: 0, midZ: -1,
+          midRotY: -0.2,
+          endZ: 1,
+          scale: 1,
+        };
+      }
+    };
 
-      tl.to(outerGroup.current.position, { x: 0, y: 0, z: -1, duration: 1 })
-        .to(outerGroup.current.rotation, { y: -0.2, duration: 1 }, "<")
-        .to(outerGroup.current.position, { z: 1, duration: 1 })
-        .to(outerGroup.current.rotation, { y: Math.PI * 2, duration: 2 });
-    }
+    const setupAnimation = () => {
+      const cfg = getResponsiveConfig();
+
+      // Kill existing ScrollTriggers before recreating
+      ScrollTrigger.getAll().forEach(t => t.kill());
+
+      if (outerGroup.current) {
+        outerGroup.current.scale.setScalar(cfg.scale);
+        gsap.set(outerGroup.current.position, { x: cfg.startX, y: cfg.startY, z: cfg.startZ });
+        gsap.set(outerGroup.current.rotation, { y: cfg.startRotY });
+
+        const tl = gsap.timeline({
+          scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1 }
+        });
+
+        tl.to(outerGroup.current.position, { x: cfg.midX, y: cfg.midY, z: cfg.midZ, duration: 1 })
+          .to(outerGroup.current.rotation, { y: cfg.midRotY, duration: 1 }, "<")
+          .to(outerGroup.current.position, { z: cfg.endZ, duration: 1 })
+          .to(outerGroup.current.rotation, { y: Math.PI * 2, duration: 2 });
+      }
+    };
+
+    setupAnimation();
+
+    // Rebuild on resize for responsive behavior
+    const onResize = () => {
+      setupAnimation();
+    };
+    window.addEventListener("resize", onResize);
 
     const onPointerMove = (e: MouseEvent) => {
       pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -138,10 +190,12 @@ export default function VendingMachine() {
     };
     window.addEventListener("pointermove", onPointerMove);
     return () => {
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
+
 
   useFrame(() => {
     if (!innerGroup.current) return;

@@ -7,8 +7,8 @@
   --color-secondary: #8B5CF6;
   --color-accent: #A855F7;
   --color-muted: #9ca3af;
-  --color-glass: rgba(255, 255, 255, 0.07);
-  --color-glass-border: rgba(255, 255, 255, 0.14);
+  --color-glass: rgba(255, 255, 255, 0.12);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
 }
 
 :root {
@@ -25,10 +25,10 @@ body {
 
 /* Glassmorphism Utilities */
 @utility glass {
-  background: rgba(15, 5, 30, 0.95);
+  background: rgba(15, 5, 30, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.21);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.11);
 }
 
@@ -36,15 +36,15 @@ body {
   background: linear-gradient(135deg, rgba(20, 10, 40, 1) 0%, rgba(5, 5, 15, 1) 100%);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.21);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
 }
 
 @utility section-card {
-  background: linear-gradient(135deg, rgba(109, 40, 255, 0.084) 0%, rgba(80, 20, 180, 0.056) 50%, rgba(20, 8, 50, 0.49) 100%);
+  background: linear-gradient(135deg, rgba(109, 40, 255, 0.12) 0%, rgba(80, 20, 180, 0.08) 50%, rgba(20, 8, 50, 0.55) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 0 0 1px rgba(109,40,255,0.11);
 }
@@ -158,4 +158,17 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Mobile responsive overrides */
+@media (max-width: 640px) {
+  .marquee-text {
+    font-size: clamp(50px, 12vw, 80px);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    padding-right: 40px;
+  }
+
+  .section-card {
+    border-radius: 16px;
+  }
 }

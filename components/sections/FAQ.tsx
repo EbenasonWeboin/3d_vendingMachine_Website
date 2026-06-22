@@ -16,19 +16,19 @@ export default function FAQ() {
 
   return (
     <section className="relative py-32 z-10">
-      <div className="max-w-3xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-12">
           Frequently Asked <span className="text-gradient">Questions</span>
         </h2>
-        <div className="section-card p-6 md:p-8">
+        <div className="section-card p-4 sm:p-6 md:p-8">
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div key={idx} className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.10)' }}>
                 <button 
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
                 >
-                  <span className="text-lg font-medium text-white">{faq.q}</span>
+                  <span className="text-base sm:text-lg font-medium text-white pr-4">{faq.q}</span>
                   <ChevronDown 
                     className={`text-primary transition-transform duration-300 ${openIndex === idx ? "rotate-180" : ""}`} 
                     size={20} 
