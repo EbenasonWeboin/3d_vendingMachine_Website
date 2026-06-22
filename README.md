@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VendAI - Premium 3D Vending Machine Website
 
-## Getting Started
+## Overview
+VendAI is an award-winning style, production-ready website for a next-generation vending machine company. It leverages modern web technologies to deliver an Apple/Tesla-tier experience with a strong focus on 3D storytelling, glassmorphism, and seamless scroll animations.
 
-First, run the development server:
+## Tech Stack
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS v4 + Vanilla CSS Variables
+- **3D Engine:** React Three Fiber (Three.js) & `@react-three/drei`
+- **Animations:** GSAP (ScrollTrigger), Framer Motion (UI reveals)
+- **Smooth Scroll:** Lenis
+- **Icons:** Lucide React
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
+- **Persistent Floating 3D Machine:** A procedural 3D vending machine model that stays on screen and reacts to scroll and mouse parallax.
+- **Scroll Storytelling:** Exploded views of the 3D machine synchronized with GSAP ScrollTrigger.
+- **Enhanced Glassmorphism:** Extensive use of `backdrop-blur`, subtle borders, and gradient glows.
+- **Advanced Background System:** Animated noise overlays, ambient fog, and geometric grid patterns.
+- **Performance Optimized:** Dynamic imports, procedural geometry (no heavy assets), and isolated rerenders.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## File Structure
+- `/app` - Next.js routing, global layouts, and CSS.
+- `/components/canvas` - React Three Fiber components (Scene, VendingMachine, etc.).
+- `/components/sections` - Individual UI sections (Hero, FAQ, Testimonials).
+- `/components/providers` - Providers like Lenis Smooth Scroll.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup Instructions
+1. Run `npm install` to install dependencies.
+2. Run `npm run dev` to start the development server.
+3. Access the site at `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Build
+Run `npm run build` to generate the production optimized bundle.
