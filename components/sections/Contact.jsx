@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 export default function Contact() {
   return (
     <section id="contact" className="relative py-20 z-10 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto section-card p-6 sm:p-8 md:p-16 text-center relative overflow-hidden">
+      <div className="max-w-5xl mx-auto section-card backdrop-blur-lg p-6 sm:p-8 md:p-16 text-center relative overflow-hidden">
         
         {/* Animated Background Gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />

@@ -16,7 +16,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-20 z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-10">
-        <div className="section-card p-4 sm:p-8 md:p-10 text-center">
+        <div className="section-card backdrop-blur-lg p-4 sm:p-8 md:p-10 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
             Trusted by <span className="text-gradient">Innovators</span>
           </h2>

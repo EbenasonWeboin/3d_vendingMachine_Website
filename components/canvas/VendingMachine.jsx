@@ -7,9 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Text, Html, RoundedBox } from "@react-three/drei";
 
-// --- Realistic Procedural Products ---
-
-function RealisticCan({ position, color, label }: { position: [number, number, number], color: string, label: string }) {
+function RealisticCan({ position, color, label }) {
   return (
     <group position={position}>
       <mesh position={[0, 0, 0]}>
@@ -35,7 +33,7 @@ function RealisticCan({ position, color, label }: { position: [number, number, n
   );
 }
 
-function RealisticBottle({ position, color, liquidColor }: { position: [number, number, number], color: string, liquidColor: string }) {
+function RealisticBottle({ position, color, liquidColor }) {
   return (
     <group position={position}>
       <mesh position={[0, -0.05, 0]}>
@@ -69,7 +67,7 @@ function RealisticBottle({ position, color, liquidColor }: { position: [number, 
   );
 }
 
-function RealisticSnack({ position, color, label }: { position: [number, number, number], color: string, label: string }) {
+function RealisticSnack({ position, color, label }) {
   return (
     <group position={position} rotation={[0.1, 0, 0]}>
       <RoundedBox args={[0.2, 0.22, 0.06]} radius={0.02} smoothness={4} position={[0, 0, 0]}>
@@ -93,7 +91,7 @@ function RealisticSnack({ position, color, label }: { position: [number, number,
   );
 }
 
-function PriceTag({ position, price }: { position: [number, number, number], price: string }) {
+function PriceTag({ position, price }) {
   return (
     <group position={position}>
       <mesh position={[0, 0, 0]}>
@@ -108,9 +106,10 @@ function PriceTag({ position, price }: { position: [number, number, number], pri
 }
 
 export default function VendingMachine() {
-  const outerGroup = useRef<THREE.Group>(null);
-  const innerGroup = useRef<THREE.Group>(null);
+  const outerGroup = useRef(null);
+  const innerGroup = useRef(null);
   const pointer = useRef(new THREE.Vector2());
+  const tlRef = useRef(null);
 
   const mWidth = 2.8;
   const mHeight = 4.8;
@@ -122,7 +121,6 @@ export default function VendingMachine() {
     const getResponsiveConfig = () => {
       const w = window.innerWidth;
       if (w < 640) {
-        // Mobile: center the machine, scale it down
         return {
           startX: 0, startY: -0.5, startZ: 1,
           startRotY: 0.15,
@@ -132,7 +130,6 @@ export default function VendingMachine() {
           scale: 0.55,
         };
       } else if (w < 1024) {
-        // Tablet: slightly offset, medium scale
         return {
           startX: -1.2, startY: -0.3, startZ: 0.5,
           startRotY: 0.15,
@@ -142,7 +139,6 @@ export default function VendingMachine() {
           scale: 0.7,
         };
       } else {
-        // Desktop: original layout
         return {
           startX: -2.5, startY: -0.2, startZ: 0,
           startRotY: 0.2,
@@ -157,8 +153,11 @@ export default function VendingMachine() {
     const setupAnimation = () => {
       const cfg = getResponsiveConfig();
 
-      // Kill existing ScrollTriggers before recreating
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      if (tlRef.current) {
+        tlRef.current.scrollTrigger?.kill();
+        tlRef.current.kill();
+        tlRef.current = null;
+      }
 
       if (outerGroup.current) {
         outerGroup.current.scale.setScalar(cfg.scale);
@@ -173,18 +172,19 @@ export default function VendingMachine() {
           .to(outerGroup.current.rotation, { y: cfg.midRotY, duration: 1 }, "<")
           .to(outerGroup.current.position, { z: cfg.endZ, duration: 1 })
           .to(outerGroup.current.rotation, { y: Math.PI * 2, duration: 2 });
+
+        tlRef.current = tl;
       }
     };
 
     setupAnimation();
 
-    // Rebuild on resize for responsive behavior
     const onResize = () => {
       setupAnimation();
     };
     window.addEventListener("resize", onResize);
 
-    const onPointerMove = (e: MouseEvent) => {
+    const onPointerMove = (e) => {
       pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       pointer.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
@@ -192,7 +192,11 @@ export default function VendingMachine() {
     return () => {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      if (tlRef.current) {
+        tlRef.current.scrollTrigger?.kill();
+        tlRef.current.kill();
+        tlRef.current = null;
+      }
     };
   }, []);
 
@@ -295,7 +299,6 @@ export default function VendingMachine() {
             </div>
           </Html>
 
-          {/* Payment & Hardware */}
           {/* NFC Reader */}
           <mesh position={[-0.1, -0.2, 0.01]}>
             <boxGeometry args={[0.15, 0.1, 0.02]} />

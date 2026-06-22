@@ -29,8 +29,8 @@ const machines = [
 
 export default function FeaturedMachines() {
   return (
-    <section id="machines" className="relative py-32 z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+    <section id="machines" className="relative py-32 z-10 ">
+      <div className="section-card backdrop-blur-lg p-8  max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

@@ -3,22 +3,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-function Counter({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
+function Counter({ from, to, duration = 2 }) {
+  const nodeRef = useRef(null);
   const inView = useInView(nodeRef, { once: true });
   const [value, setValue] = useState(from);
 
   useEffect(() => {
     if (!inView) return;
     
-    let startTime: number;
-    let animationFrame: number;
+    let startTime;
+    let animationFrame;
 
-    const update = (currentTime: number) => {
+    const update = (currentTime) => {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
       
-      // easeOutExpo
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       
       setValue(Math.floor(from + (to - from) * easeProgress));

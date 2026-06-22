@@ -12,7 +12,7 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section className="relative py-32 z-10">
@@ -20,7 +20,7 @@ export default function FAQ() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-12">
           Frequently Asked <span className="text-gradient">Questions</span>
         </h2>
-        <div className="section-card p-4 sm:p-6 md:p-8">
+        <div className="section-card backdrop-blur-lg p-4 sm:p-6 md:p-8">
           <div className="space-y-3">
             {faqs.map((faq, idx) => (
               <div key={idx} className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.10)' }}>

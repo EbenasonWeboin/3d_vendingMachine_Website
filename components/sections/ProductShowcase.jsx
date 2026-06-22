@@ -5,8 +5,8 @@ import { Environment, Float, PresentationControls } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
-function Bottle({ color, position }: { color: string; position: [number, number, number] }) {
-  const ref = useRef<THREE.Group>(null);
+function Bottle({ color, position }) {
+  const ref = useRef(null);
   useFrame(() => {
     if (ref.current) ref.current.rotation.y += 0.01;
   });
@@ -38,7 +38,7 @@ export default function ProductShowcase() {
   return (
     <section className="relative py-20 z-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="section-card p-4 sm:p-8 md:p-12">
+        <div className="section-card backdrop-blur-lg p-4 sm:p-8 md:p-12">
           {/* Header */}
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">

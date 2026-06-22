@@ -17,14 +17,13 @@ const navLinks = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const indicatorRef = useRef<HTMLSpanElement>(null);
-  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [hoveredLink, setHoveredLink] = useState(null);
+  const indicatorRef = useRef(null);
+  const linkRefs = useRef({});
 
-  // Track active section via Intersection Observer
   useEffect(() => {
     const sectionIds = navLinks.map((l) => l.section);
-    const observers: IntersectionObserver[] = [];
+    const observers = [];
 
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -42,7 +41,6 @@ export default function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  // Move the sliding pill indicator to the active link
   useEffect(() => {
     const target = hoveredLink ?? activeSection;
     const el = linkRefs.current[target];
@@ -59,7 +57,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Floating Capsule Navbar */}
       <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-auto">
         <div
           className="flex items-center gap-2 px-4 py-3 rounded-full"
@@ -71,7 +68,6 @@ export default function Navbar() {
             boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(109,40,255,0.2), inset 0 1px 0 rgba(255,255,255,0.08)",
           }}
         >
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 mr-3 shrink-0">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-base shadow-lg">
               V
@@ -79,12 +75,9 @@ export default function Navbar() {
             <span className="text-base font-bold tracking-tight text-white hidden sm:block">VendAI</span>
           </Link>
 
-          {/* Divider */}
           <div className="w-px h-6 bg-white/10 mr-2 hidden md:block" />
 
-          {/* Desktop Nav Links with Sliding Pill */}
           <ul className="hidden md:flex items-center gap-1 relative">
-            {/* Sliding active/hover pill */}
             <span
               ref={indicatorRef}
               className="absolute top-0 h-full rounded-full transition-all duration-300 ease-out pointer-events-none"
@@ -112,10 +105,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Divider */}
           <div className="w-px h-6 bg-white/10 mx-2 hidden md:block" />
 
-          {/* CTA Button */}
           <button
             className="hidden md:block px-5 py-2 rounded-full text-sm font-semibold text-white shrink-0 transition-all duration-300"
             style={{
@@ -126,7 +117,6 @@ export default function Navbar() {
             Get Quote
           </button>
 
-          {/* Mobile Toggle */}
           <button
             className="md:hidden text-white p-1 ml-1"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -135,7 +125,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div

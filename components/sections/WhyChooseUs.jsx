@@ -15,8 +15,9 @@ const benefits = [
 ];
 
 export default function WhyChooseUs() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef(null);
+  const sliderRef = useRef(null);
+  const animRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +25,7 @@ export default function WhyChooseUs() {
     if (sectionRef.current && sliderRef.current) {
       const slider = sliderRef.current;
       
-      gsap.to(slider, {
+      const anim = gsap.to(slider, {
         x: () => -(slider.scrollWidth - window.innerWidth + 100),
         ease: "none",
         scrollTrigger: {
@@ -36,10 +37,16 @@ export default function WhyChooseUs() {
           invalidateOnRefresh: true,
         }
       });
+
+      animRef.current = anim;
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      if (animRef.current) {
+        animRef.current.scrollTrigger?.kill();
+        animRef.current.kill();
+        animRef.current = null;
+      }
     };
   }, []);
 

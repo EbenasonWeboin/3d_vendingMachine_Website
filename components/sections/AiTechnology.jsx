@@ -16,7 +16,7 @@ export default function AiTechnology() {
   return (
     <section id="technology" className="relative py-20 z-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="section-card p-4 sm:p-8 md:p-12">
+        <div className="section-card backdrop-blur-lg p-4 sm:p-8 md:p-12">
           <div className="text-center mb-12">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

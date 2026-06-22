@@ -67,9 +67,7 @@ export default function Scene() {
 
           <Sparkles count={400} scale={20} size={4} speed={0.2} opacity={0.15} color="#d699ff" />
 
-          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-            <VendingMachine />
-          </Float>
+          <VendingMachine />
           <Environment preset="city" />
         </Suspense>
         
